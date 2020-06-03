@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/acl.xsd">
+   <acl>
+       <resources>
+           <resource id="Magento_Backend::admin">
+               <resource id="SussexDev_Extrato::menu" sortOrder="10" disabled="false" title="Pontos Menu">
+                    <resource id="SussexDev_Extrato::data" sortOrder="20" disabled="false" title="Pontos Item"/>
+               </resource>
+           </resource>
+       </resources>
+   </acl>
+</config>

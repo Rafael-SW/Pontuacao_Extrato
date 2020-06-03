@@ -1,0 +1,9 @@
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+
+        <add id="SussexDev_Sample::menu" title="Pontos" module="SussexDev_Sample" sortOrder="20" resource="SussexDev_Sample::menu"/>
+        <add id="SussexDev_Sample::data" title="Pontos" module="SussexDev_Sample" sortOrder="75" resource="SussexDev_Sample::data"
+             action="sample/data/index" parent="SussexDev_Sample::menu"/>
+    </menu>
+</config>

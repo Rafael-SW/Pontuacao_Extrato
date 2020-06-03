@@ -1,0 +1,8 @@
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+
+        <add id="SussexDev_Extrato::data" title="Extrato" module="SussexDev_Extrato" sortOrder="75" resource="SussexDev_Extrato::data"
+             action="extrato/data/index" parent="SussexDev_Sample::menu"/>
+    </menu>
+</config>
