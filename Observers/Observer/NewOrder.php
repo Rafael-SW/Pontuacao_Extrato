@@ -132,7 +132,6 @@
 //    }
 //}
 
-
 namespace SussexDev\Observers\Observer;
 
 use Magento\Framework\Event\Observer;
@@ -151,19 +150,34 @@ class NewOrder implements ObserverInterface
 
     public function execute(Observer $observer)
     {
-        $this->logger->info('Observer Atingido SALES_ORDER_PLACE_AFTER', $observer->debug());
+        $this->logger->info('Observer Atingido sales_order_save_after', $observer->debug());
 
         $order = $observer->getEvent()->getOrder();
         $orderId = $order->getId();
 
         $order = $observer->getEvent()->getOrder();
-        $incrementId = $order->getIncrementId();
+       $incrementId = $order->getIncrementId();
 
-        $this->logger->info('ORDER_ID: ' . $orderId, $observer->debug());
         $this->logger->info('INCREMENT_ID: ' . $incrementId, $observer->debug());
+        $this->logger->info('ORDER_ID: ' . $orderId, $observer->debug());
 
-        $this->logger->info('ORDER JSON: ' . json_encode($order), $observer->debug());
+        $sql = "SELECT status FROM sales_order where entity_id =" . $orderId . ";";
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
+        $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
+        $connection = $resource->getConnection();
+        $connection->query($sql);
+        $result = $connection->fetchAll($sql);
 
+        $status='';
+        foreach ($result as $r) {
+            $status = $r['status'];
+        }
+
+        if($status == 'holded') {
+            $this->logger->info('ORDER STATUS: ' . $status, $observer->debug());
+        }else{
+            $this->logger->info('ENTROU NO ELSE: ' . $status, $observer->debug());
+        }
 
     }
 }
